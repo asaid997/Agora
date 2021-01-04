@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Inventory from './sotre/Inventory';
+import {Item} from './sotre/item';
+
+const store = new Inventory()
+// const i = new Item("test1")
+// const i2 = new Item("test1")
+// const i3 = new Item("test2")
+
+store.addItem("Shampo",10)
+store.addItem("Shampo")
+store.addItem("Soap")
+store.addItem("Tomatos",20,3)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <App store={store}/>,
   document.getElementById('root')
 );
 
