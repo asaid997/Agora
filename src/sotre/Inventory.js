@@ -1,4 +1,4 @@
-import { observable, action, makeObservable, toJS } from 'mobx'
+import { observable, action, makeObservable, computed } from 'mobx'
 import {Item} from './item'
 
 
@@ -11,7 +11,8 @@ export default class Inventory {
             items: observable,
             addItem: action,
             changePrice: action,
-            buyItem: action
+            buyItem: action,
+            numItems: computed
         })
     }
 
@@ -34,6 +35,9 @@ export default class Inventory {
             this.items.splice(i,1)
         else
             this.items[i].quantity--
+    }
+    get numItems() {
+        return this.items.length
     }
 
 } 

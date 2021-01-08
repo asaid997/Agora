@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 
 function Item(props) {
     const [edit, setEdit] = useState(false)
     const [price, setPrice] = useState(0)
     const i = props.item
-    const { store } = props
+    const { inventory } = props
 
 
     const cancel_edit = () => setEdit(false)
     const changeInput = e => setPrice(e.target.value)
     const changePrice = () => {
-        store.changePrice(i.name, price)
+        inventory.changePrice(i.name, price)
         setEdit(false)
     }
     const doubleClicked = () => setEdit(true)
@@ -29,4 +29,4 @@ function Item(props) {
     )
 }
 
-export default observer(Item)
+export default inject("inventory")(observer(Item))

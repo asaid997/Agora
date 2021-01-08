@@ -1,13 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import Market from './components/Market';
+import { observer } from 'mobx-react'
 
 function App(props) {
   return (
     <div className="App">
-      <Market store={props.store} />
+      <Market  />
     </div>
   );
 }
 
-export default App;
+export default  observer(App)

@@ -5,19 +5,24 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Inventory from './sotre/Inventory';
 import {Item} from './sotre/item';
+import { Provider } from 'mobx-react'
 
-const store = new Inventory()
+const inventory = new Inventory()
 // const i = new Item("test1")
 // const i2 = new Item("test1")
 // const i3 = new Item("test2")
 
-store.addItem("Shampo",10)
-store.addItem("Shampo")
-store.addItem("Soap")
-store.addItem("Tomatos",20,3)
+inventory.addItem("Shampo",10)
+inventory.addItem("Shampo")
+inventory.addItem("Soap")
+inventory.addItem("Tomatos",20,3)
+
+const stores = {inventory}
 
 ReactDOM.render(
-    <App store={store}/>,
+  <Provider {...stores}>
+    <App />,
+  </Provider>,
   document.getElementById('root')
 );
 
